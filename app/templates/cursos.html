@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Cursos{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h2 class="mb-4">Lista de Cursos</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Carga Horária Total</th>
+                    <th scope="col">Duração (meses)</th>
+                    <th scope="col">Área de Saber</th>
+                    <th scope="col">Instituição</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for curso in cursos %}
+                    <tr>
+                        <td>{{ curso.nome }}</td>
+                        <td>{{ curso.carga_horaria_total }}</td>
+                        <td>{{ curso.duracao_meses }}</td>
+                        <td>{{ curso.area_saber.nome }}</td>
+                        <td>{{ curso.instituicao.nome }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

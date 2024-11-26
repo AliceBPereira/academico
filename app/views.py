@@ -79,29 +79,29 @@ class IndexView(View):
 #         messages.success(request, "Área do saber adicionada com sucesso!")
 #         return redirect('areas_saber')
 
-# # Gerenciar cursos
-# class CursosView(View):
-#     def get(self, request, *args, **kwargs):
-#         cursos = Curso.objects.select_related('area_saber', 'instituicao').all()
-#         return render(request, 'curso.html', {'cursos': cursos})
+# Gerenciar cursos
+class CursosView(View):
+    def get(self, request, *args, **kwargs):
+        cursos = Curso.objects.select_related('area_saber', 'instituicao').all()
+        return render(request, 'cursos.html', {'cursos': cursos})
 
-#     def post(self, request, *args, **kwargs):
-#         nome = request.POST.get('nome')
-#         carga_horaria_total = request.POST.get('carga_horaria_total')
-#         duracao_meses = request.POST.get('duracao_meses')
-#         area_id = request.POST.get('area_saber')
-#         instituicao_id = request.POST.get('instituicao')
-#         area = get_object_or_404(AreaSaber, id=area_id)
-#         instituicao = get_object_or_404(InstituicaoEnsino, id=instituicao_id)
-#         Curso.objects.create(
-#             nome=nome,
-#             carga_horaria_total=carga_horaria_total,
-#             duracao_meses=duracao_meses,
-#             area_saber=area,
-#             instituicao=instituicao
-#         )
-#         messages.success(request, "Curso adicionado com sucesso!")
-#         return redirect('cursos')
+    def post(self, request, *args, **kwargs):
+        nome = request.POST.get('nome')
+        carga_horaria_total = request.POST.get('carga_horaria_total')
+        duracao_meses = request.POST.get('duracao_meses')
+        area_id = request.POST.get('area_saber')
+        instituicao_id = request.POST.get('instituicao')
+        area = get_object_or_404(AreaSaber, id=area_id)
+        instituicao = get_object_or_404(InstituicaoEnsino, id=instituicao_id)
+        Curso.objects.create(
+            nome=nome,
+            carga_horaria_total=carga_horaria_total,
+            duracao_meses=duracao_meses,
+            area_saber=area,
+            instituicao=instituicao
+        )
+        messages.success(request, "Curso adicionado com sucesso!")
+        return redirect('cursos')
 
 # # Gerenciar turnos
 # class TurnosView(View):
@@ -116,15 +116,80 @@ class IndexView(View):
 #         return redirect('turnos')
 
 # # Gerenciar disciplinas
-# class DisciplinasView(View):
-#     def get(self, request, *args, **kwargs):
-#         disciplinas = Disciplina.objects.select_related('area_saber').all()
-#         return render(request, 'disciplina.html', {'disciplinas': disciplinas})
+class DisciplinasView(View):
+    def get(self, request, *args, **kwargs):
+        disciplinas = Disciplina.objects.select_related('area_saber').all()
+        return render(request, 'disciplinas.html', {'disciplinas': disciplinas})
 
-#     def post(self, request, *args, **kwargs):
-#         nome = request.POST.get('nome')
-#         area_id = request.POST.get('area_saber')
-#         area = get_object_or_404(AreaSaber, id=area_id)
-#         Disciplina.objects.create(nome=nome, area_saber=area)
-#         messages.success(request, "Disciplina adicionada com sucesso!")
-#         return redirect('disciplinas')
+    def post(self, request, *args, **kwargs):
+        nome = request.POST.get('nome')
+        area_id = request.POST.get('area_saber')
+        area = get_object_or_404(AreaSaber, id=area_id)
+        Disciplina.objects.create(nome=nome, area_saber=area)
+        messages.success(request, "Disciplina adicionada com sucesso!")
+        return redirect('disciplinas')
+
+class MatriculasView(View):
+    def get(self, request, *args, **kwargs):
+        matriculas = Matricula.objects.select_related('instituicao', 'curso', 'pessoa').all()
+        instituicoes = InstituicaoEnsino.objects.all()
+        cursos = Curso.objects.all()
+        pessoas = Pessoa.objects.all()
+        return render(request, 'matriculas.html', {
+            'matriculas': matriculas,
+            'instituicoes': instituicoes,
+            'cursos': cursos,
+            'pessoas': pessoas
+        })
+
+    def post(self, request, *args, **kwargs):
+        instituicao_id = request.POST.get('instituicao')
+        curso_id = request.POST.get('curso')
+        pessoa_id = request.POST.get('pessoa')
+        data_inicio = request.POST.get('data_inicio')
+        data_previsao_termino = request.POST.get('data_previsao_termino')
+
+        instituicao = get_object_or_404(InstituicaoEnsino, id=instituicao_id)
+        curso = get_object_or_404(Curso, id=curso_id)
+        pessoa = get_object_or_404(Pessoa, id=pessoa_id)
+
+        Matricula.objects.create(
+            instituicao=instituicao,
+            curso=curso,
+            pessoa=pessoa,
+            data_inicio=data_inicio,
+            data_previsao_termino=data_previsao_termino
+        )
+
+        messages.success(request, "Matrícula criada com sucesso!")
+        return redirect('matriculas')
+class AvaliacoesView(View):
+    # Exibição das avaliações existentes
+    def get(self, request, *args, **kwargs):
+        avaliacoes = Avaliacao.objects.all()
+        return render(request, 'avaliacoes.html', {'avaliacoes': avaliacoes})
+
+    # Criação de uma nova avaliação
+    def post(self, request, *args, **kwargs):
+        descricao = request.POST.get('descricao')
+        curso_id = request.POST.get('curso')
+        disciplina_id = request.POST.get('disciplina')
+        nota = request.POST.get('nota')
+        tipoavaliacao_id = request.POST.get('tipoavaliacao')
+
+        # Buscar os objetos associados a partir dos IDs
+        curso = Curso.objects.get(id=curso_id)
+        disciplina = Disciplina.objects.get(id=disciplina_id)
+        tipoavaliacao = TipoAvaliacao.objects.get(id=tipoavaliacao_id)
+
+        # Criar a avaliação
+        Avaliacao.objects.create(
+            descricao=descricao,
+            curso=curso,
+            disciplina=disciplina,
+            nota=nota,
+            tipoavaliacao=tipoavaliacao
+        )
+        
+        messages.success(request, "Avaliação criada com sucesso!")
+        return redirect('avaliacoes')

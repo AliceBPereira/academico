@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% block title %}Cursos{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h2 class="mb-4">Lista de Matrículas</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Instituição</th>
+                    <th>Curso</th>
+                    <th>Pessoa</th>
+                    <th>Data de Início</th>
+                    <th>Data Prevista de Término</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for matricula in matriculas %}
+                    <tr>
+                        <td>{{ matricula.instituicao.nome }}</td>
+                        <td>{{ matricula.curso.nome }}</td>
+                        <td>{{ matricula.pessoa.nome }}</td>
+                        <td>{{ matricula.data_inicio }}</td>
+                        <td>{{ matricula.data_previsao_termino }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <hr class="my-4">
+
+        <!-- <h3>Nova Matrícula</h3>
+        <form method="post" action="">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="instituicao">Instituição:</label>
+                <select class="form-control" id="instituicao" name="instituicao" required>
+                    {% for instituicao in instituicoes %}
+                        <option value="{{ instituicao.id }}">{{ instituicao.nome }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="curso">Curso:</label>
+                <select class="form-control" id="curso" name="curso" required>
+                    {% for curso in cursos %}
+                        <option value="{{ curso.id }}">{{ curso.nome }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="pessoa">Pessoa:</label>
+                <select class="form-control" id="pessoa" name="pessoa" required>
+                    {% for pessoa in pessoas %}
+                        <option value="{{ pessoa.id }}">{{ pessoa.nome }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="data_inicio">Data de Início:</label>
+                <input type="date" class="form-control" id="data_inicio" name="data_inicio" required>
+            </div>
+            <div class="form-group">
+                <label for="data_previsao_termino">Data Prevista de Término:</label>
+                <input type="date" class="form-control" id="data_previsao_termino" name="data_previsao_termino" required>
+            </div>
+            <button type="submit" class="btn btn-success">Adicionar Matrícula</button>
+        </form> -->
+    </div>
+{% endblock %}

@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block title %}Avaliações{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h2 class="mb-4">Avaliações</h2>
+
+        <!-- Exibir a lista de avaliações -->
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Descrição</th>
+                    <th scope="col">Curso</th>
+                    <th scope="col">Disciplina</th>
+                    <th scope="col">Nota</th>
+                    <th scope="col">Tipo de Avaliação</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for avaliacao in avaliacoes %}
+                    <tr>
+                        <td>{{ avaliacao.descricao }}</td>
+                        <td>{{ avaliacao.curso.nome }}</td>
+                        <td>{{ avaliacao.disciplina.nome }}</td>
+                        <td>{{ avaliacao.nota }}</td>
+                        <td>{{ avaliacao.tipoavaliacao.nome }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <!-- Formulário para adicionar uma nova avaliação -->
+        <!-- <h3 class="mt-5">Adicionar Nova Avaliação</h3>
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="descricao">Descrição</label>
+                <textarea class="form-control" id="descricao" name="descricao" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="curso">Curso</label>
+                <select class="form-control" id="curso" name="curso" required>
+                    {% for curso in cursos %}
+                        <option value="{{ curso.id }}">{{ curso.nome }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="disciplina">Disciplina</label>
+                <select class="form-control" id="disciplina" name="disciplina" required>
+                    {% for disciplina in disciplinas %}
+                        <option value="{{ disciplina.id }}">{{ disciplina.nome }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="nota">Nota</label>
+                <input type="number" class="form-control" id="nota" name="nota" step="0.1" min="0" max="10" required>
+            </div>
+            <div class="form-group">
+                <label for="tipoavaliacao">Tipo de Avaliação</label>
+                <select class="form-control" id="tipoavaliacao" name="tipoavaliacao" required>
+                    {% for tipo in tipos_avaliacao %}
+                        <option value="{{ tipo.id }}">{{ tipo.nome }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button type="submit" class="btn btn-success">Adicionar Avaliação</button>
+        </form> -->
+    </div>
+{% endblock %}

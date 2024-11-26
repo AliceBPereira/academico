@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}Cursos{% endblock %}
+
+{% block content %}
+
+    <div class="container mt-5">
+        <div class="jumbotron text-center">
+            <h1 class="display-4">Bem-vindo ao Sistema de Matrículas</h1>
+            <p class="lead">Gerencie matrículas, cursos, disciplinas e avaliações de forma simples e eficiente.</p>
+            <p class="lead">Aqui você pode visualizar todos os dados relacionados aos alunos, cursos, avaliações e muito mais.</p>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="card-title">Cursos</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Visualize e gerencie todos os cursos disponíveis.</p>
+                        <a href="/cursos/" class="btn btn-primary">Ver Cursos</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="card-title">Matrículas</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Consulte as matrículas dos alunos nos cursos.</p>
+                        <a href="/matriculas/" class="btn btn-primary">Ver Matrículas</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="card-title">Avaliações</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Acesse as avaliações realizadas pelos alunos nos cursos.</p>
+                        <a href="/avaliacoes/" class="btn btn-primary">Ver Avaliações</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

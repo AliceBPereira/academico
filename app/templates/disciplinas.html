@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Cursos{% endblock %}
+
+{% block content %}
+    <div class="container mt-5">
+        <h2 class="mb-4">Tabela de Disciplinas</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Área do Saber</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for disciplina in disciplinas %}
+                    <tr>
+                        <td>{{ disciplina.nome }}</td>
+                        <td>{{ disciplina.area_saber.nome }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <hr class="my-4">
+
+        <!-- <h3>Adicionar Nova Disciplina</h3>
+        <form method="post" action="">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="nome">Nome da Disciplina:</label>
+                <input type="text" class="form-control" id="nome" name="nome" required>
+            </div>
+            <div class="form-group">
+                <label for="area_saber">Área do Saber:</label>
+                <select class="form-control" id="area_saber" name="area_saber" required>
+                    {% for area in AreaSaber.objects.all %}
+                        <option value="{{ area.id }}">{{ area.nome }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button type="submit" class="btn btn-success">Adicionar</button>
+        </form> -->
+    </div>
+{% endblock %}
