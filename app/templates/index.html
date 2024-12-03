@@ -1,17 +1,19 @@
 {% extends "base.html" %}
 
-{% block title %}Cursos{% endblock %}
+{% block title %}Bem-vindo ao Sistema de Matrículas{% endblock %}
 
 {% block content %}
-
     <div class="container mt-5">
+        <!-- Jumbotron -->
         <div class="jumbotron text-center">
             <h1 class="display-4">Bem-vindo ao Sistema de Matrículas</h1>
             <p class="lead">Gerencie matrículas, cursos, disciplinas e avaliações de forma simples e eficiente.</p>
             <p class="lead">Aqui você pode visualizar todos os dados relacionados aos alunos, cursos, avaliações e muito mais.</p>
         </div>
 
+        <!-- Row with Cards for different sections -->
         <div class="row">
+            <!-- Card for Cursos -->
             <div class="col-md-4">
                 <div class="card">
                     <div class="card-header bg-success text-white">
@@ -23,6 +25,8 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Card for Matrículas -->
             <div class="col-md-4">
                 <div class="card">
                     <div class="card-header bg-success text-white">
@@ -34,6 +38,8 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Card for Avaliações -->
             <div class="col-md-4">
                 <div class="card">
                     <div class="card-header bg-success text-white">
@@ -46,6 +52,174 @@
                 </div>
             </div>
         </div>
-    </div>
 
+        <!-- Additional sections can be added here -->
+        <div class="row mt-4">
+            <!-- Card for Alunos -->
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header bg-info text-white">
+                        <h5 class="card-title">Alunos</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Gerencie informações sobre os alunos.</p>
+                        <a href="/alunos/" class="btn btn-primary">Ver Alunos</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card for Instituições -->
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header bg-info text-white">
+                        <h5 class="card-title">Instituições</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Visualize as informações das instituições.</p>
+                        <a href="/instituicoes/" class="btn btn-primary">Ver Instituições</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card for Disciplinas -->
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header bg-info text-white">
+                        <h5 class="card-title">Disciplinas</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Gerencie as disciplinas oferecidas.</p>
+                        <a href="/disciplinas/" class="btn btn-primary">Ver Disciplinas</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Row for more management sections -->
+        <div class="row mt-4">
+            <!-- Card for Cidades -->
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header bg-warning text-dark">
+                        <h5 class="card-title">Cidades</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Consulte as cidades onde as instituições estão localizadas.</p>
+                        <a href="/cidades/" class="btn btn-primary">Ver Cidades</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card for Frequências -->
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header bg-warning text-dark">
+                        <h5 class="card-title">Frequências</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Acompanhe as frequências dos alunos nas disciplinas.</p>
+                        <a href="/frequencias/" class="btn btn-primary">Ver Frequências</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card for Ocorrências -->
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header bg-warning text-dark">
+                        <h5 class="card-title">Ocorrências</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Registre e gerencie as ocorrências dos alunos.</p>
+                        <a href="/ocorrencias/" class="btn btn-primary">Ver Ocorrências</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Row for more sections -->
+        <div class="row mt-4">
+            <!-- Card for Ocupações -->
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header bg-danger text-white">
+                        <h5 class="card-title">Ocupações</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Gerencie as ocupações das pessoas.</p>
+                        <a href="/ocupacoes/" class="btn btn-primary">Ver Ocupações</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card for Pessoas -->
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header bg-danger text-white">
+                        <h5 class="card-title">Pessoas</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Gerencie as pessoas no sistema.</p>
+                        <a href="/pessoas/" class="btn btn-primary">Ver Pessoas</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card for Tipos de Avaliação -->
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header bg-danger text-white">
+                        <h5 class="card-title">Tipos de Avaliação</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Gerencie os tipos de avaliação utilizados.</p>
+                        <a href="/tipo_avaliacao/" class="btn btn-primary">Ver Tipos de Avaliação</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Row for more sections -->
+        <div class="row mt-4">
+            <!-- Card for Turmas -->
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header bg-secondary text-white">
+                        <h5 class="card-title">Turmas</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Gerencie as turmas dos cursos.</p>
+                        <a href="/turma/" class="btn btn-primary">Ver Turmas</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card for Turnos -->
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header bg-secondary text-white">
+                        <h5 class="card-title">Turnos</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Gerencie os turnos das turmas.</p>
+                        <a href="/turno/" class="btn btn-primary">Ver Turnos</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card for Áreas do Saber -->
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header bg-secondary text-white">
+                        <h5 class="card-title">Áreas do Saber</h5>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">Gerencie as áreas do saber nos cursos.</p>
+                        <a href="/area_saber/" class="btn btn-primary">Ver Áreas do Saber</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
 {% endblock %}
