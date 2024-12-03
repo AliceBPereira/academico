@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}Tipos de Avaliação{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4">Lista de Tipos de Avaliação</h2>
+
+    <!-- Tabela de tipos de avaliação -->
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Tipo</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for tipo in tipos_avaliacao %}
+                <tr>
+                    <td>{{ tipo.nome }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

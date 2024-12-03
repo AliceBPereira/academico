@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block title %}Cidades{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4">Lista de Cidades</h2>
+    
+    <!-- Tabela de cidades -->
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Nome</th>
+                <th scope="col">UF</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cidade in cidades %}
+                <tr>
+                    <td>{{ cidade.nome }}</td>
+                    <td>{{ cidade.uf }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+    <!-- Formulário para adicionar nova cidade
+    <h3 class="mt-4">Adicionar Nova Cidade</h3>
+    <form action="{% url 'cidades' %}" method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="nome" class="form-label">Nome da Cidade</label>
+            <input type="text" name="nome" id="nome" class="form-control" placeholder="Digite o nome" required>
+        </div>
+        <div class="mb-3">
+            <label for="uf" class="form-label">UF</label>
+            <input type="text" name="uf" id="uf" class="form-control" maxlength="2" placeholder="Ex.: SP" required>
+        </div>
+        <button class="btn btn-primary" type="submit">Adicionar Cidade</button>
+    </form> -->
+</div>
+{% endblock %}

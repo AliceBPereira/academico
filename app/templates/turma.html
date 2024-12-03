@@ -1,0 +1,30 @@
+<!-- turma.html -->
+{% extends "base.html" %}
+
+{% block title %}Turmas{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4">Lista de Turmas</h2>
+
+    <!-- Tabela de turmas -->
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Nome da Turma</th>
+                <th scope="col">Turno</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for turma in turmas %}
+                <tr>
+                    <td>{{ turma.nome }}</td>
+                    <td>{{ turma.turno.nome }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    
+</div>
+{% endblock %}

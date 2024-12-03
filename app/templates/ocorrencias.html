@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Ocorrências{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4">Lista de Ocorrências</h2>
+    
+    <!-- Tabela de ocorrências -->
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Descrição</th>
+                <th scope="col">Data</th>
+                <th scope="col">Curso</th>
+                <th scope="col">Disciplina</th>
+                <th scope="col">Pessoa</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for ocorrencia in ocorrencias %}
+                <tr>
+                    <td>{{ ocorrencia.descricao }}</td>
+                    <td>{{ ocorrencia.data }}</td>
+                    <td>{{ ocorrencia.curso.nome }}</td>
+                    <td>{{ ocorrencia.disciplina.nome }}</td>
+                    <td>{{ ocorrencia.pessoa.nome }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

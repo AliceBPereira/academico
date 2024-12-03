@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Frequências{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4">Lista de Frequências</h2>
+    
+    <!-- Tabela de frequências -->
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Curso</th>
+                <th scope="col">Disciplina</th>
+                <th scope="col">Pessoa</th>
+                <th scope="col">Número de Faltas</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for frequencia in frequencias %}
+                <tr>
+                    <td>{{ frequencia.curso.nome }}</td>
+                    <td>{{ frequencia.disciplina.nome }}</td>
+                    <td>{{ frequencia.pessoa.nome }}</td>
+                    <td>{{ frequencia.numero_faltas }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

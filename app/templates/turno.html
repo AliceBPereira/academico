@@ -1,0 +1,37 @@
+<!-- turno.html -->
+{% extends "base.html" %}
+
+{% block title %}Turnos{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4">Lista de Turnos</h2>
+
+    <!-- Tabela de turnos -->
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Nome do Turno</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for turno in turnos %}
+                <tr>
+                    <td>{{ turno.nome }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Formulário para adicionar um novo turno
+    <h3 class="mt-4">Adicionar Turno</h3>
+    <form action="{% url 'turnos' %}" method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="nome" class="form-label">Nome do Turno</label>
+            <input type="text" name="nome" id="nome" class="form-control" placeholder="Digite o nome do turno" required>
+        </div>
+        <button class="btn btn-primary" type="submit">Adicionar Turno</button>
+    </form> -->
+</div>
+{% endblock %}

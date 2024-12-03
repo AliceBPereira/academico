@@ -26,4 +26,17 @@ urlpatterns = [
     path('disciplinas/', DisciplinasView.as_view(), name='disciplinas'),
     path('matriculas/', MatriculasView.as_view(), name='matriculas'),
     path('avaliacoes/', AvaliacoesView.as_view(), name='avaliacoes'),
+    path('cidades/', CidadesView.as_view(), name='cidades'),
+    path('frequencias/', FrequenciasView.as_view(), name='frequencia'),
+    path('instituicao/', InstituicoesView.as_view(), name='instituicoes'),
+    path('ocorrencias/', OcorrenciasView.as_view(), name='ocorrencias'),
+    path('ocupacoes/', OcupacoesView.as_view(), name='ocupacoes'),
+    path('pessoas/', PessoasView.as_view(), name='pessoas'),
+    path('tipo_avaliacao/', TipoAvaliacaoView.as_view(), name='tipo_avaliacao'),
+    path('turma/', TurmaView.as_view(), name='turmas'),
+    path('turno/', TurnosView.as_view(), name='turnos'),
+    path('area_saber/', AreasSaberView.as_view(), name='area_saber'),
+
+    
+    # path('disciplina-por-curso/', DisciplinaPorCursoView.as_view(), name='disciplina_por_curso'),
 ]

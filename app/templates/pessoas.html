@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block title %}Pessoas{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="mb-4">Lista de Pessoas</h2>
+
+    <!-- Tabela de pessoas -->
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Nome</th>
+                <th scope="col">CPF</th>
+                <th scope="col">Email</th>
+                <th scope="col">Cidade</th>
+                <th scope="col">Ocupação</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for pessoa in pessoas %}
+                <tr>
+                    <td>{{ pessoa.nome }}</td>
+                    <td>{{ pessoa.cpf }}</td>
+                    <td>{{ pessoa.email }}</td>
+                    <td>{{ pessoa.cidade.nome }}</td>
+                    <td>{{ pessoa.ocupacao.nome }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Formulário para adicionar pessoa
+    <h3 class="mt-4">Adicionar Pessoa</h3>
+    <form action="{% url 'pessoas' %}" method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="nome" class="form-label">Nome</label>
+            <input type="text" name="nome" id="nome" class="form-control" placeholder="Digite o nome da pessoa" required>
+        </div>
+        <div class="mb-3">
+            <label for="cpf" class="form-label">CPF</label>
+            <input type="text" name="cpf" id="cpf" class="form-control" placeholder="Digite o CPF da pessoa" required>
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" name="email" id="email" class="form-control" placeholder="Digite o email da pessoa" required>
+        </div>
+        <div class="mb-3">
+            <label for="cidade" class="form-label">Cidade</label>
+            <select name="cidade" id="cidade" class="form-select" required>
+                <option value="" disabled selected>Selecione a cidade</option>
+                {% for cidade in cidades %}
+                    <option value="{{ cidade.id }}">{{ cidade.nome }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="ocupacao" class="form-label">Ocupação</label>
+            <select name="ocupacao" id="ocupacao" class="form-select" required>
+                <option value="" disabled selected>Selecione a ocupação</option>
+                {% for ocupacao in ocupacoes %}
+                    <option value="{{ ocupacao.id }}">{{ ocupacao.nome }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <button class="btn btn-primary" type="submit">Adicionar Pessoa</button>
+    </form> -->
+</div>
+{% endblock %}
